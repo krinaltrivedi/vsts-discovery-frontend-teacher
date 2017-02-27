@@ -1,0 +1,31 @@
+<form action="" class="form-inline" id="status-selector-form">
+    <div class="form-group">
+        <label for="status-week">Week</label>
+        <input type='text' class="form-control" id='weekdatepicker' />
+    </div>
+    <script>
+        $(function () {
+            $('#weekdatepicker').datetimepicker({
+                format:"DD/MM/YYYY"
+            });
+            $('#weekdatepicker').on("dp.change", function(event) {
+                console.log("date changed")
+                var selectedDate = moment($(this).data()).format("YYYY-MM-DD");
+                getWeeklyDistribution(selectedDate);
+            });
+        });
+    </script>
+
+
+</form>
+<div class="row" id="charts-container">
+    <div class="row">
+        <div class="col-sm-6">
+            <canvas id="myChart" ></canvas>
+        </div>
+        <div class="col-sm-6">
+            <canvas id="myChart2" ></canvas>
+        </div>
+    </div>
+</div>
+
